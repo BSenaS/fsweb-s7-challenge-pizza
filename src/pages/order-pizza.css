@@ -1,3 +1,7 @@
+p,h3 {
+  font-family: Barlow;
+}
+
 .order-section {
   display: flex;
   max-width: 590px; 
@@ -20,5 +24,58 @@
 .order-fiyat-stock p {
   display: inline-block;
   margin-left: 5rem;
+}
+
+
+.pizza-name {
+  align-self: flex-start; 
+  font-weight: 600;
+  font-size: 22px;
+  margin: 1rem 0;
+}
+
+.pizza-fiyati-p {
+  font-weight: 700;
+  font-size: 28px;
+}
+
+.order-fiyat-stock p {
+  color: #5F5F5F;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.ürün-aciklama {
+  font-weight: 400;
+  font-size: 16px;
+  color: #5F5F5F;
+  margin: 1rem 0;
+}
+
+.h3-aciklamalar {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.boyut-sec {
+  font-weight: 500;
+  font-size: 16px;
+  color: #5F5F5F;
+}
+
+.order-options {
+  width: 100%;
+  display: flex;
+}
+
+.order-options-size {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  width: 50%;
+}
+
+.order-options-size label {
+  margin-left: 1rem;
 }
 
