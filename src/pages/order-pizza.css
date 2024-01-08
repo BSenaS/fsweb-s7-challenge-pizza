@@ -1,0 +1,24 @@
+.order-section {
+  display: flex;
+  max-width: 590px; 
+  width: 100%; 
+  margin: 0 auto; 
+  justify-content: left;
+  align-items: center;
+  flex-direction: column;
+}
+
+.order-fiyat {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  height: 37px;
+  width: 100%;
+  margin-top: 10px; 
+}
+
+.order-fiyat-stock p {
+  display: inline-block;
+  margin-left: 5rem;
+}
+

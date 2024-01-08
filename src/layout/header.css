@@ -1,0 +1,28 @@
+header {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  background-color: #CE2829;
+  height: 20vh;
+}
+
+.header-div {
+  text-align: left;
+}
+
+header h1 {
+  color: white;
+  margin: 0; 
+}
+
+header p {
+  margin: 0; /* Paragraf etrafındaki boşluğu kaldır */
+  color: white;
+  font-size: 14px; /* Paragrafın font büyüklüğü */
+  opacity: 0.8; /* Paragrafın opaklığı */
+  margin-bottom: 0; /* Paragrafın alt boşluğunu kaldır */
+}
+
+.siparis-span {
+  font-weight: bold;
+}

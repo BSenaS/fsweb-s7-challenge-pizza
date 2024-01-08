@@ -4,6 +4,8 @@ import OrderPizza from "./pages/OrderPizza.jsx";
 import Success from "./pages/Success.jsx";
 import { Switch } from "react-router-dom";
 import { Route } from "react-router-dom/cjs/react-router-dom.min.js";
+//Reset css ' i projeye ekleme
+import "./reset.css"; 
 const App = () => {
   return (
     <>
