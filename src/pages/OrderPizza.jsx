@@ -46,6 +46,13 @@ export default function OrderPizza(){
   })
 
   //Quantityi azalt ve arttır butonları için changeHandler
+  const handleQuantityChange = ((deger,event) => {
+    event.preventDefault();
+    const newQuantity = quantity + deger;
+    if(newQuantity >= 0) {
+      setQuantity(newQuantity)
+    }
+  });
 
   let adet = 1;
   const checkBoxList = [
@@ -140,26 +147,28 @@ export default function OrderPizza(){
         <hr /> 
         <div className="siparis-toplami-container">
           {/* Buton */}
-          <div>
-            <button className="azalt-button">-</button>
-            {adet}
-            <button className="arttir-button">+</button>
+          <div className="siparis-quantity-btn">
+            <button className="azalt-button" onClick={(e) => handleQuantityChange(-1,e)}>-</button>
+           <div className="quantity-display">{quantity}</div>
+            <button className="arttir-button" onClick={(e) => handleQuantityChange(1,e)}>+</button>
           </div>
 
           <div className="siparis-calc-container">
-            <p>Sipariş Toplamı</p>
-            <div>
-              <div className="siparis-secim">
-                <p>Seçimler</p>
-                <p>25.00₺</p>
-              </div>
-              <div className="siparis-toplam">
-                <p>Toplam</p>
-                <p>{totalfiyat}</p>
-              </div>
-              <button className="siparis-button"> 
-                SİPARİŞ VER
-              </button>
+            <div className="siparis-calc-wrapper">
+              <p className="siparis-p1">Sipariş Toplamı</p>
+                <div className="siparis-secim">
+                  <p className="siparis-p2">Seçimler</p>
+                  <p>{secimler.length * 5.00}₺</p>
+                </div>
+                <div className="siparis-toplam">
+                  <p className="siparis-p2">Toplam</p>
+                  <p >{`${totalfiyat}₺`}</p>
+                </div>
+                <div className="btn-div">
+                  <button className="siparis-button"> 
+                    SİPARİŞ VER
+                  </button>
+                </div>
             </div>
           </div>
         </div>

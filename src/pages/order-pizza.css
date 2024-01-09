@@ -180,6 +180,105 @@ hr {
 
 /* Siparis sayisini arttir azalt kısmı ve siparis fiyat toplam kısmı */
 
+.siparis-toplami-container {
+  width: 100%;
+  display: flex;
+}
+
+.siparis-quantity-btn {
+  display: flex;
+  align-items: flex-start;
+  margin-right: 63px;
+}
+
+.siparis-quantity-btn button{
+  background-color: #FDC913;
+  padding: 1rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.quantity-display {
+  min-width: 2rem;
+  border: 1px solid #D9D9D9;
+  padding: 0.9rem 1.5rem;
+}
+
+
+/* Sipariş Ver, Toplam,seçim componenti */
+
+.siparis-calc-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 259px;
+  margin-bottom: 8rem;
+  border: 1px solid #D9D9D9;
+  border-radius: 6px;
+}
+
+.siparis-calc-wrapper {
+  width: 100%;
+}
+
+.siparis-calc-wrapper p{
+  display: inline-flex;
+  margin-left: 3rem;
+  margin-top: 1rem;
+}
+
+.siparis-p1 {
+  margin-top: 0.5rem;
+  color: #292929;
+  font-family: Barlow;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.siparis-p2 {
+  margin-right: 8rem;
+}
+
+.siparis-secim p {
+  color: #5F5F5F;
+  font-family: Barlow;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.siparis-toplam {
+  color: #CE2829;
+  font-family: Barlow;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.siparis-toplam {
+  margin-bottom: 2rem;
+}
+
+.siparis-calc-wrapper button{
+  width: 100%;
+  border-radius: 6px;
+  background: #FDC913;
+  padding: 1rem 2rem;
+  border: none;
+  cursor: pointer;
+  color: #292929;
+  font-family: Barlow;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+
+
+
+
 
 
 
