@@ -3,14 +3,49 @@ import Header from "../layout/Header";
 import "./order-pizza.css";
 import { useHistory } from "react-router-dom";
 export default function OrderPizza(){
-  //Hooklar
+  //Hooklar  --->
   //Secilen Malzemeler
   const [secimler, setSecimler] = useState([]);
   //Total Price Hooku (Baslangic degeri pizza fiyati)
-  const [fiyat,totalFiyat] = useState(85.50);
+  const [totalfiyat,setTotalFiyat] = useState(85.50);
+  //Pizza siparis sayisini yakalayan hook
+  const [quantity,setQuantity] = useState(1);
   //Validation için butonu disable/enable etme
   const [isEnabled, setIsEnabled] = useState(false);
+
   const history = useHistory();
+
+    //Seçilen malzemelerin toplam fiyatını hesaplama (secimler stateini izleyip, her seçim de güncelleme)
+    useEffect(() => {
+      const secimlerFiyat = secimler.length * 5;
+      const newTotalPrice = 85.50 + secimlerFiyat;
+      setTotalFiyat(newTotalPrice);
+    }, [secimler]);
+  
+    // Pizzanın toplam fiyatını adet değiştiğinde güncelle (quantityi izler)
+    useEffect(() => {
+      const newTotalPrice = 85.50 * quantity;
+      setTotalFiyat(newTotalPrice);
+    }, [quantity]); 
+
+
+  //Checkbox için handleChange eventi
+  const handleCheckboxChange = ((event,item) => {
+    const isChecked = event.target.checked;
+    const id = event.target.id;
+
+    if(isChecked) {
+    // Checkbox seçiliyse, secimler listesine malzemeyi ekle
+      const newSecimler = [...secimler,id];
+      setSecimler(newSecimler);
+    }else {
+    // Checkbox seçili değilse, secimler listesinden malzemeyi çıkar
+      const newSecimler = secimler.filter((secim) => secim !== id);
+      setSecimler(newSecimler);
+    }
+  })
+
+  //Quantityi azalt ve arttır butonları için changeHandler
 
   let adet = 1;
   const checkBoxList = [
@@ -83,10 +118,15 @@ export default function OrderPizza(){
           {/* CheckboxListe map atarak, checkboxlar oluşturma */}
           <div className="malzeme-options">
           {checkBoxList.map((item,index) => {
-            return (<div key={index}>
-            <input type="checkbox" id={item.toLowerCase()} />
-            <label htmlFor={item.toLowerCase()}>{item}</label>
-          </div>)
+            return (
+            <div key={index}>
+              <input 
+              type="checkbox" 
+              id={item.toLowerCase()} 
+              onChange={(event) => handleCheckboxChange(event, item)}
+              />
+              <label htmlFor={item.toLowerCase()}>{item}</label>
+            </div>)
           })}
           </div>
         </div>
@@ -115,9 +155,9 @@ export default function OrderPizza(){
               </div>
               <div className="siparis-toplam">
                 <p>Toplam</p>
-                <p>110.50₺</p>
+                <p>{totalfiyat}</p>
               </div>
-              <button className="siparis-button" type="submit"> 
+              <button className="siparis-button"> 
                 SİPARİŞ VER
               </button>
             </div>
