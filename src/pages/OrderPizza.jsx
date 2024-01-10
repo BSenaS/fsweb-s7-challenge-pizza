@@ -59,22 +59,18 @@ export default function OrderPizza(){
     };
   
 
-    //Seçilen malzemelerin toplam fiyatını hesaplama (secimler stateini izleyip, her seçim de güncelleme)
+    //Seçilen malzemelerin toplam fiyatını hesaplama (secimler stateini izleyip, her seçim de güncelleme + quantityi izler totalPrice ı günceller )
     useEffect(() => {
       const secimlerFiyat = secimler.length * 5;
-      const newTotalPrice = 85.50 + secimlerFiyat;
+      const newTotalPrice = 85.50 + secimlerFiyat + (85.50 * (quantity - 1)); 
       setTotalFiyat(newTotalPrice);
-    }, [secimler]);
+    }, [secimler, quantity]);
   
-    // Pizzanın toplam fiyatını adet değiştiğinde güncelle (quantityi izler)
-    useEffect(() => {
-      const newTotalPrice = 85.50 * quantity;
-      setTotalFiyat(newTotalPrice);
-    }, [quantity]); 
+
 
 
   //Checkbox için handleChange eventi
-  const handleCheckboxChange = ((event,item) => {
+  const handleCheckboxChange = ((event) => {
     const isChecked = event.target.checked;
     const id = event.target.id;
 
