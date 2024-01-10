@@ -1,0 +1,54 @@
+
+.home-banner {
+  height: 100vh;
+  background-image: url('../mvp-assets/mvp-banner.png'); 
+  background-size: cover; 
+  background-position:center; 
+  background-repeat: no-repeat;
+}
+
+.home-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.home-wrapper h1 {
+  color: white;
+  font-family: Barlow;
+  font-weight: 700;
+  font-size: 2.7rem;
+  margin-top: 116px;
+  margin-bottom: 35px;
+}
+
+.home-wrapper h2 {
+  color: #FFF;
+  text-align: center;
+  font-family: Roboto Condensed;
+  font-size: 86px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 92px; 
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 13px;
+}
+
+.h2-wrapper {
+  max-width: 40rem;
+}
+
+.home-wrapper button {
+  color: #292929;
+  text-align: center;
+  font-family: Barlow;
+  font-size: 18px;
+  border-radius: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  background: #FDC913;
+  border: none;
+  padding: 1rem 3.8rem;
+  cursor: pointer;
+}
