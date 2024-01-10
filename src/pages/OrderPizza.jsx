@@ -4,10 +4,9 @@ import "./order-pizza.css";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-export default function OrderPizza(){
+export default function OrderPizza(props){
+  const {handleChangeSize,handleHamurKalinligi,secimler,handleCheckboxChange} = props;
   //Hooklar  --->
-  //Secilen Malzemeler
-  const [secimler, setSecimler] = useState([]);
   //Total Price Hooku (Baslangic degeri pizza fiyati)
   const [totalfiyat,setTotalFiyat] = useState(85.50);
   //Pizza siparis sayisini yakalayan hook
@@ -16,84 +15,9 @@ export default function OrderPizza(){
   const [isEnabled, setIsEnabled] = useState(false);
   //İsim inputu için state
   const [userName, setUserName] = useState('');
-
   const history = useHistory();
 
-  //Axios isteği ile post atıp, verileri consola yazdırma + history push ile success sayfasına route
-  const handleOrder = (e) => {
-    e.preventDefault(); 
-    axios.post('https://reqres.in/api/users', { 
-      selectedToppings: secimler,
-      quantity: quantity,
-      totalPrice: totalfiyat
-    })
-    .then(response => {
-      console.log("Sipariş başarıyla gönderildi:", response.data);
-      history.push("/success");
-    })
-    .catch(error => {
-      console.error("Sipariş gönderilirken bir hata oluştu:", error);
-    });
-  };
-
-  // İsim inputundaki değişikliklerde userName state'ini güncelleyen handleChange fonksiyonu
-    const handleChange = (e) => {
-      setUserName(e.target.value);
-    };
-
-    //İsim validasyonu ve malzeme sayısı kontrolü
-    useEffect(() => {
-      if (secimler.length >= 4 && secimler.length <= 10 && validateName(document.getElementById("name-input").value)) {
-        setIsEnabled(true);
-      } else {
-        setIsEnabled(false);
-      }
-    }, [secimler, userName]);
-
-    // İsim doğrulama fonksiyonu
-    const validateName = (name) => {
-      if (name.length < 2) {
-        return false;
-      }
-      return true;
-    };
-  
-
-    //Seçilen malzemelerin toplam fiyatını hesaplama (secimler stateini izleyip, her seçim de güncelleme + quantityi izler totalPrice ı günceller )
-    useEffect(() => {
-      const secimlerFiyat = secimler.length * 5;
-      const newTotalPrice = 85.50 + secimlerFiyat + (85.50 * (quantity - 1)); 
-      setTotalFiyat(newTotalPrice);
-    }, [secimler, quantity]);
-  
-
-
-
-  //Checkbox için handleChange eventi
-  const handleCheckboxChange = ((event) => {
-    const isChecked = event.target.checked;
-    const id = event.target.id;
-
-    if(isChecked) {
-    // Checkbox seçiliyse, secimler listesine malzemeyi ekle
-      const newSecimler = [...secimler,id];
-      setSecimler(newSecimler);
-    }else {
-    // Checkbox seçili değilse, secimler listesinden malzemeyi çıkar
-      const newSecimler = secimler.filter((secim) => secim !== id);
-      setSecimler(newSecimler);
-    }
-  })
-
-  //Quantityi azalt ve arttır butonları için changeHandler
-  const handleQuantityChange = ((deger,event) => {
-    event.preventDefault();
-    const newQuantity = quantity + deger;
-    if(newQuantity > 0) {
-      setQuantity(newQuantity)
-    }
-  });
-
+  //Malzeme listem buradan map ile createleniyor
   const checkBoxList = [
     'Pepperoni',
     'Tavuk Izgara',
@@ -110,6 +34,62 @@ export default function OrderPizza(){
     'Jalepeno',
     "Sucuk"
   ];
+
+  //Axios isteği ile post atıp, verileri consola yazdırma + history push ile success sayfasına route
+  const handleOrder = (e) => {
+    e.preventDefault(); 
+    axios.post('https://reqres.in/api/users', { 
+      selectedToppings: secimler,
+      quantity: quantity,
+      totalPrice: totalfiyat,
+    })
+    .then(response => {
+      console.log("Sipariş başarıyla gönderildi:", response.data);
+      history.push("/success");
+    })
+    .catch(error => {
+      console.error("Sipariş gönderilirken bir hata oluştu:", error);
+    });
+  };
+
+  // İsim inputundaki değişikliklerde userName state'ini güncelleyen handleChange fonksiyonu
+    const handleChange = (e) => {
+      setUserName(e.target.value);
+    };
+
+    //İsim ve malzeme sayısı validasyonu
+    useEffect(() => {
+      if (secimler.length >= 4 && secimler.length <= 10 && validateName(document.getElementById("name-input").value)) {
+        setIsEnabled(true);
+      } else {
+        setIsEnabled(false);
+      }
+    }, [secimler, userName]);
+
+    // İsim doğrulama fonksiyonu
+    const validateName = (name) => {
+      if (name.length < 2) {
+        return false;
+      }
+      return true;
+    };
+  
+    //Seçilen malzemelerin toplam fiyatını hesaplama (secimler stateini izleyip, her seçim de güncelleme + quantityi izler totalPrice ı günceller )
+    useEffect(() => {
+      const secimlerFiyat = secimler.length * 5;
+      const newTotalPrice = 85.50 + secimlerFiyat + (85.50 * (quantity - 1)); 
+      setTotalFiyat(newTotalPrice);
+    }, [secimler, quantity]);
+  
+    //Quantityi azalt ve arttır butonları için changeHandler
+  const handleQuantityChange = ((deger,event) => {
+    event.preventDefault();
+    const newQuantity = quantity + deger;
+    if(newQuantity > 0) {
+      setQuantity(newQuantity)
+    }
+  });
+
   return(
     <>
     <Header/>
@@ -124,42 +104,46 @@ export default function OrderPizza(){
           </div>
         </div>
         <p className="ürün-aciklama">Frontent Dev olarak hala position:absolute kullanıyorsan bu çok acı pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir. . Küçük bir pizzaya bazen pizzetta denir.</p>
-
+        {/* Pizza Boyutu, handleChangeler ile valueler app.jsx e gönderiliyor */}
         <div className="order-options">
           <div className="order-options-size">
             <h3 className="h3-aciklamalar">Boyut Seç *</h3>
 
             <div className="radio-div">
-            <input type="radio" id="Kucuk" name="boyut"/>
+            <input type="radio" id="Kucuk" name="boyut" onChange={() => handleChangeSize("Küçük")}/>
             <label htmlFor="Kucuk">Küçük</label>
             </div>
             
             <div className="radio-div">
-            <input type="radio" id="Orta" name="boyut"/>
+            <input type="radio" id="Orta" name="boyut" onChange={() => handleChangeSize("Orta")}/>
             <label htmlFor="Orta">Orta</label>
             </div>
 
             <div className="radio-div">
-            <input type="radio" id="Buyuk" name="boyut"/>
+            <input type="radio" id="Buyuk" name="boyut" onChange={() => handleChangeSize("Büyük")}/>
             <label htmlFor="Buyuk" >Büyük</label>
             </div>
           </div>
-
+          {/* Hamur Kalınlığı,handleChangeler ile valueler app.jsx e gönderiliyor */}
           <div className="order-options-type">
             <h3 className="h3-aciklamalar h3-hamur">Hamur Seç *</h3>
-            <select name="options">
+            <select name="options" onChange={(e) => handleHamurKalinligi(e.target.value)}>
               <option value="ince">Hamur Kalınlığı</option>
-              <option value="ince" className="boyut-sec">İnce</option>
+              <option value="ince" className="boyut-sec" >İnce</option>
               <option value="orta" className="boyut-sec">Orta</option>
               <option value="kalin" className="boyut-sec">Kalın</option>
             </select>
           </div>
         </div>
-
+        {/* Malzeme kısmı, mapping uyarı mesajı */}
         <div className="malzeme-container">
           <div className="malzeme-paragraph">
             <h3 className="h3-aciklamalar">Ek Malzemeler</h3>
             <p>En Fazla 10 malzeme seçebilirsiniz. 5₺</p>
+            {/* Uyarı mesajı Malzeme. */}
+            {secimler.length < 4 || secimler.length > 10 ?
+            (<p className="malzeme-uyari" style={{color: "red"}}>
+            Lütfen en az 4, en fazla 10 malzeme seçiniz..</p>): null}
           </div>
           {/* CheckboxListe map atarak, checkboxlar oluşturma */}
           <div className="malzeme-options">
@@ -198,7 +182,6 @@ export default function OrderPizza(){
         </div>
         <hr /> 
         <div className="siparis-toplami-container">
-          {/* Buton */}
           <div className="siparis-quantity-btn">
             <button className="azalt-button" onClick={(e) => handleQuantityChange(-1,e)}>-</button>
            <div className="quantity-display">{quantity}</div>

@@ -103,7 +103,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   flex-shrink: 0;
-  margin-bottom: 8rem;
+  margin-bottom: 6rem;
   margin-top: 2rem;
 }
 
@@ -289,7 +289,7 @@ hr {
   border-radius: 2px;
   min-height: 2rem;
   min-width: 20rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   margin-top: 0.7rem;
 }
 
@@ -299,11 +299,14 @@ hr {
 
 }
 
-
 .isim-uyarı {
   color: red;
   display: inline-flex;
   margin: 0;
+}
+/* Butonun disable olma durumn da, rengi gri olsun */
+.siparis-button:disabled {
+  background-color: gray;
 }
 
 
