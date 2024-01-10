@@ -129,19 +129,19 @@ export default function OrderPizza(){
           <div className="order-options-size">
             <h3 className="h3-aciklamalar">Boyut Seç *</h3>
 
-            <div>
-            <input type="radio" id="kucuk" />
-            <label htmlFor="kucuk" className="boyut-sec">Küçük</label>
+            <div className="radio-div">
+            <input type="radio" id="Kucuk" name="boyut"/>
+            <label htmlFor="Kucuk">Küçük</label>
             </div>
             
-            <div>
-            <input type="radio" id="orta"/>
-            <label htmlFor="kucuk" className="boyut-sec">Orta</label>
+            <div className="radio-div">
+            <input type="radio" id="Orta" name="boyut"/>
+            <label htmlFor="Orta">Orta</label>
             </div>
 
-            <div>
-            <input type="radio" id="buyuk"/>
-            <label htmlFor="buyuk" className="boyut-sec">Büyük</label>
+            <div className="radio-div">
+            <input type="radio" id="Buyuk" name="boyut"/>
+            <label htmlFor="Buyuk" >Büyük</label>
             </div>
           </div>
 
