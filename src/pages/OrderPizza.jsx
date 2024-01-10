@@ -2,6 +2,8 @@ import React, { useEffect,useState } from "react";
 import Header from "../layout/Header";
 import "./order-pizza.css";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
+
 export default function OrderPizza(){
   //Hooklar  --->
   //Secilen Malzemeler
@@ -14,6 +16,24 @@ export default function OrderPizza(){
   const [isEnabled, setIsEnabled] = useState(false);
 
   const history = useHistory();
+
+  //Axios isteği ile post atıp, verileri consola yazdırma + history push ile success sayfasına route
+  const handleOrder = (e) => {
+    e.preventDefault(); 
+    axios.post('https://reqres.in/api/users', { 
+      selectedToppings: secimler,
+      quantity: quantity,
+      totalPrice: totalfiyat
+    })
+    .then(response => {
+      console.log("Sipariş başarıyla gönderildi:", response.data);
+      history.push("/success");
+    })
+    .catch(error => {
+      console.error("Sipariş gönderilirken bir hata oluştu:", error);
+    });
+  };
+  
 
     //Seçilen malzemelerin toplam fiyatını hesaplama (secimler stateini izleyip, her seçim de güncelleme)
     useEffect(() => {
@@ -74,7 +94,7 @@ export default function OrderPizza(){
   return(
     <>
     <Header/>
-    <form action="" id="pizza-form">
+    <form action="" id="pizza-form" onSubmit={handleOrder}>
       <div className="order-section">
         <h2 className="pizza-name">Position Absolute Acı Pizza</h2>
         <div className="order-fiyat">
@@ -165,7 +185,7 @@ export default function OrderPizza(){
                   <p >{`${totalfiyat}₺`}</p>
                 </div>
                 <div className="btn-div">
-                  <button className="siparis-button"> 
+                  <button className="siparis-button" type="submit"> 
                     SİPARİŞ VER
                   </button>
                 </div>

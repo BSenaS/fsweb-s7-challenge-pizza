@@ -39,6 +39,7 @@ body {
 .pizza-fiyati-p {
   font-weight: 700;
   font-size: 28px;
+  margin-bottom: 2rem;
 }
 
 .order-fiyat-stock p {
