@@ -154,6 +154,7 @@ export default function OrderPizza(props){
               type="checkbox" 
               id={item.toLowerCase()} 
               onChange={(event) => handleCheckboxChange(event, item)}
+              data-cy="malzeme-test"
               />
               <label htmlFor={item.toLowerCase()}>{item}</label>
             </div>)
@@ -168,6 +169,7 @@ export default function OrderPizza(props){
           id="name-input"
           value={userName}
           onChange={handleChange}
+          data-cy="isimAlani"
           />
           {userName.length > 0 && userName.length < 2 && (
           <p className="isim-uyarı">İsim en az 2 karakter olmalıdır.</p>
