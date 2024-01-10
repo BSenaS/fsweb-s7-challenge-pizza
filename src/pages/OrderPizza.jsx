@@ -14,6 +14,8 @@ export default function OrderPizza(){
   const [quantity,setQuantity] = useState(1);
   //Validation için butonu disable/enable etme
   const [isEnabled, setIsEnabled] = useState(false);
+  //İsim inputu için state
+  const [userName, setUserName] = useState('');
 
   const history = useHistory();
 
@@ -33,6 +35,28 @@ export default function OrderPizza(){
       console.error("Sipariş gönderilirken bir hata oluştu:", error);
     });
   };
+
+  // İsim inputundaki değişikliklerde userName state'ini güncelleyen handleChange fonksiyonu
+    const handleChange = (e) => {
+      setUserName(e.target.value);
+    };
+
+    //İsim validasyonu ve malzeme sayısı kontrolü
+    useEffect(() => {
+      if (secimler.length >= 4 && secimler.length <= 10 && validateName(document.getElementById("name-input").value)) {
+        setIsEnabled(true);
+      } else {
+        setIsEnabled(false);
+      }
+    }, [secimler, userName]);
+
+    // İsim doğrulama fonksiyonu
+    const validateName = (name) => {
+      if (name.length < 2) {
+        return false;
+      }
+      return true;
+    };
   
 
     //Seçilen malzemelerin toplam fiyatını hesaplama (secimler stateini izleyip, her seçim de güncelleme)
@@ -69,7 +93,7 @@ export default function OrderPizza(){
   const handleQuantityChange = ((deger,event) => {
     event.preventDefault();
     const newQuantity = quantity + deger;
-    if(newQuantity >= 0) {
+    if(newQuantity > 0) {
       setQuantity(newQuantity)
     }
   });
@@ -157,6 +181,19 @@ export default function OrderPizza(){
           })}
           </div>
         </div>
+        
+        <div className="isim-wrapper">
+          <p>Lütfen İsminizi Giriniz..</p>
+          <input type="text" 
+          placeholder="İsminizi Giriniz" 
+          id="name-input"
+          value={userName}
+          onChange={handleChange}
+          />
+          {userName.length > 0 && userName.length < 2 && (
+          <p className="isim-uyarı">İsim en az 2 karakter olmalıdır.</p>
+          )}
+        </div>
 
         <div className="siparis-notu-container">
           <h3 className="h3-aciklamalar">Sipariş Notu</h3>
@@ -185,7 +222,7 @@ export default function OrderPizza(){
                   <p >{`${totalfiyat}₺`}</p>
                 </div>
                 <div className="btn-div">
-                  <button className="siparis-button" type="submit"> 
+                  <button className="siparis-button" type="submit" disabled={!isEnabled}> 
                     SİPARİŞ VER
                   </button>
                 </div>
