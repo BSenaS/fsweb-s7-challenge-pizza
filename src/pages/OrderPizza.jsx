@@ -115,7 +115,8 @@ export default function OrderPizza(props){
         {/* Pizza Boyutu, handleChangeler ile valueler app.jsx e gönderiliyor */}
         <div className="order-options">
           <div className="order-options-size">
-            <h3 className="h3-aciklamalar">Boyut Seç *</h3>
+            <h3 className="h3-aciklamalar">Boyut Seç
+            {" "} <span style={{color: "red"}}>*</span></h3>
 
             <div className="radio-div">
             <input type="radio" id="Kucuk" name="boyut" onChange={() => handleChangeSize("Küçük")}/>
@@ -134,10 +135,11 @@ export default function OrderPizza(props){
           </div>
           {/* Hamur Kalınlığı,handleChangeler ile valueler app.jsx e gönderiliyor */}
           <div className="order-options-type">
-            <h3 className="h3-aciklamalar h3-hamur">Hamur Seç *</h3>
+            <h3 className="h3-aciklamalar h3-hamur">Hamur Seç 
+            {" "} <span style={{color: "red"}}>*</span> </h3>
             <select name="options" 
             onChange={(e) => handleHamurKalinligi(e.target.value)}>
-              <option value="ince" disabled selected>Hamur Kalınlığı</option>
+              <option disabled selected>Hamur Kalınlığı</option>
               <option value="ince" className="boyut-sec" >İnce</option>
               <option value="orta" className="boyut-sec">Orta</option>
               <option value="kalin" className="boyut-sec">Kalın</option>
@@ -211,7 +213,9 @@ export default function OrderPizza(props){
                   <p >{`${totalfiyat}₺`}</p>
                 </div>
                 <div className="btn-div">
-                  <button className="siparis-button" type="submit" disabled={!isEnabled}> 
+                  <button className="siparis-button" type="submit" 
+                  data-cy="form-button"
+                  disabled={!isEnabled}> 
                     SİPARİŞ VER
                   </button>
                 </div>
