@@ -98,7 +98,6 @@ export default function OrderPizza(){
     }
   });
 
-  let adet = 1;
   const checkBoxList = [
     'Pepperoni',
     'Tavuk Izgara',
