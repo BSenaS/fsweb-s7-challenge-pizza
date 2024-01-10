@@ -5,7 +5,14 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 export default function OrderPizza(props){
-  const {handleChangeSize,handleHamurKalinligi,secimler,handleCheckboxChange} = props;
+  const {
+    handleChangeSize,
+    handleHamurKalinligi,
+    secimler,
+    handleCheckboxChange,
+    isSizeSelected,
+    isDoughSelected
+  } = props;
   //Hooklar  --->
   //Total Price Hooku (Baslangic degeri pizza fiyati)
   const [totalfiyat,setTotalFiyat] = useState(85.50);
@@ -57,14 +64,15 @@ export default function OrderPizza(props){
       setUserName(e.target.value);
     };
 
-    //İsim ve malzeme sayısı validasyonu
+    //İsim && malzeme sayısı && Boyut && Hamur Kalinligi &&validasyonu
     useEffect(() => {
-      if (secimler.length >= 4 && secimler.length <= 10 && validateName(document.getElementById("name-input").value)) {
+      if (secimler.length >= 4 && secimler.length <= 10 && 
+        validateName(document.getElementById("name-input").value) && isSizeSelected && isDoughSelected) {
         setIsEnabled(true);
       } else {
         setIsEnabled(false);
       }
-    }, [secimler, userName]);
+    }, [secimler, userName,isSizeSelected,isDoughSelected]);
 
     // İsim doğrulama fonksiyonu
     const validateName = (name) => {
@@ -127,8 +135,9 @@ export default function OrderPizza(props){
           {/* Hamur Kalınlığı,handleChangeler ile valueler app.jsx e gönderiliyor */}
           <div className="order-options-type">
             <h3 className="h3-aciklamalar h3-hamur">Hamur Seç *</h3>
-            <select name="options" onChange={(e) => handleHamurKalinligi(e.target.value)}>
-              <option value="ince">Hamur Kalınlığı</option>
+            <select name="options" 
+            onChange={(e) => handleHamurKalinligi(e.target.value)}>
+              <option value="ince" disabled selected>Hamur Kalınlığı</option>
               <option value="ince" className="boyut-sec" >İnce</option>
               <option value="orta" className="boyut-sec">Orta</option>
               <option value="kalin" className="boyut-sec">Kalın</option>

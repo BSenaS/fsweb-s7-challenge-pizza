@@ -11,15 +11,19 @@ const App = () => {
   const [secimler, setSecimler] = useState([]);
   const [hamurKalinligi,setHamurKalinligi] = useState("");
   const [selectedSize,setSelectedSize] = useState("");
+  const [isSizeSelected, setIsSizeSelected] = useState(false);
+  const [isDoughSelected, setIsDoughSelected] = useState(false);
 
-  //Seçilen boyut, Proplar OrderPizza Sayfasına gönderiliyor.
-  const handleChangeSize = (size) => {
-    setSelectedSize(size)
+  //Seçilen boyut, Proplar OrderPizza Sayfasına gönderiliyor. (+Validasyon)
+  const handleChangeSize = (value) => {
+    setSelectedSize(value)
+    setIsSizeSelected(true);
   };
 
   //Hamur Kalınlığı Seçimi
-  const handleHamurKalinligi = (kalinlik) => {
-    setHamurKalinligi(kalinlik)
+  const handleHamurKalinligi = (value) => {
+    setHamurKalinligi(value)
+    setIsDoughSelected(true);
   };
 
   //Checkbox için handleChange eventi
@@ -50,6 +54,8 @@ const App = () => {
           handleHamurKalinligi={handleHamurKalinligi}
           secimler={secimler}
           handleCheckboxChange={handleCheckboxChange}
+          isSizeSelected={isSizeSelected}
+          isDoughSelected={isDoughSelected}
           />
         </Route>
 
