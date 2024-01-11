@@ -11,11 +11,12 @@ export default function OrderPizza(props){
     secimler,
     handleCheckboxChange,
     isSizeSelected,
-    isDoughSelected
+    isDoughSelected,
+    totalfiyat={totalfiyat},
+    setTotalFiyat={setTotalFiyat}
   } = props;
   //Hooklar  --->
-  //Total Price Hooku (Baslangic degeri pizza fiyati)
-  const [totalfiyat,setTotalFiyat] = useState(85.50);
+
   //Pizza siparis sayisini yakalayan hook
   const [quantity,setQuantity] = useState(1);
   //Validation için butonu disable/enable etme
@@ -42,23 +43,7 @@ export default function OrderPizza(props){
     "Sucuk"
   ];
 
-  //Axios isteği ile post atıp, verileri consola yazdırma + history push ile success sayfasına route
-  const handleOrder = (e) => {
-    e.preventDefault(); 
-    axios.post('https://reqres.in/api/users', { 
-      selectedToppings: secimler,
-      quantity: quantity,
-      totalPrice: totalfiyat,
-    })
-    .then(response => {
-      console.log("Sipariş başarıyla gönderildi:", response.data);
-      history.push("/success");
-    })
-    .catch(error => {
-      console.error("Sipariş gönderilirken bir hata oluştu:", error);
-    });
-  };
-
+  
   // İsim inputundaki değişikliklerde userName state'ini güncelleyen handleChange fonksiyonu
     const handleChange = (e) => {
       setUserName(e.target.value);
@@ -97,6 +82,21 @@ export default function OrderPizza(props){
       setQuantity(newQuantity)
     }
   });
+
+    //Axios isteği ile post atıp, verileri consola yazdırma + history push ile success sayfasına route
+    const handleOrder = (e) => {
+      e.preventDefault(); 
+      axios.post('https://reqres.in/api/users', { 
+        selectedToppings: secimler,
+      })
+      .then(response => {
+        console.log("Sipariş başarıyla gönderildi:", response.data);
+        history.push("/success");
+      })
+      .catch(error => {
+        console.error("Sipariş gönderilirken bir hata oluştu:", error);
+      });
+    };
 
   return(
     <>
@@ -140,9 +140,9 @@ export default function OrderPizza(props){
             <select name="options" 
             onChange={(e) => handleHamurKalinligi(e.target.value)}>
               <option disabled selected>Hamur Kalınlığı</option>
-              <option value="ince" className="boyut-sec" >İnce</option>
-              <option value="orta" className="boyut-sec">Orta</option>
-              <option value="kalin" className="boyut-sec">Kalın</option>
+              <option value="İnce" className="boyut-sec" >İnce</option>
+              <option value="Orta" className="boyut-sec">Orta</option>
+              <option value="Kalın" className="boyut-sec">Kalın</option>
             </select>
           </div>
         </div>
@@ -163,11 +163,11 @@ export default function OrderPizza(props){
             <div key={index}>
               <input 
               type="checkbox" 
-              id={item.toLowerCase()} 
+              id={item} 
               onChange={(event) => handleCheckboxChange(event, item)}
               data-cy="malzeme-test"
               />
-              <label htmlFor={item.toLowerCase()}>{item}</label>
+              <label htmlFor={item}>{item}</label>
             </div>)
           })}
           </div>

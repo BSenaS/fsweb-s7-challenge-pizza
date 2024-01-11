@@ -13,11 +13,11 @@
   font-family: Barlow;
   font-weight: 700;
   font-size: 2.7rem;
-  margin-top: 116px;
-  margin-bottom: 200px;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
 }
 
-.main-wrapper p {
+.siparis-al {
   color: #FFF;
   text-align: center;
   font-family: Roboto Condensed;
@@ -29,7 +29,85 @@
   text-transform: uppercase;
 }
 
-.siparis-wrapper {
+.siparis-confirm {
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  margin: 0 auto; 
 }
+.lezzet-p {
+  color: #FDC913;
+  font-family: Satisfy;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.siparis-confirm hr {
+  background: #FAF7F2;
+}
+
+.siparis-confirm h2 {
+  color: #FFF;
+  font-family: Barlow;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+
+.seçilen-malzemeler {
+  display: flex;
+  justify-content: center; 
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 250px;
+}
+
+.malz-icerik {
+  display: inline-flex;
+  color: #FFF;
+  font-family: Barlow;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.siparis-bilgi-wrapper {
+  display: flex;
+  border-radius: 6px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #FAF7F2;
+  width: 288px;
+  height: 191px;
+  flex-shrink: 0;
+  margin: 2rem auto;
+}
+
+.siparis-bilgi-wrapper p {
+  color: #FFF;
+  font-family: Barlow;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2;
+}
+
+.bosluk1 {
+  margin-right: 3.2rem;
+}
+.bosluk2 {
+  margin-right: 4rem;
+}
+.bosluk3 {
+  margin-right: 4.3rem;
+}
+
+
+
 

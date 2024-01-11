@@ -4,6 +4,7 @@ import OrderPizza from "./pages/OrderPizza.jsx";
 import Success from "./pages/Success.jsx";
 import { Switch } from "react-router-dom";
 import { Route } from "react-router-dom/cjs/react-router-dom.min.js";
+import SiparisBilgi from "./components/SiparisBilgi.jsx";
 //Reset css ' i projeye ekleme
 import "./reset.css"; 
 const App = () => {
@@ -13,6 +14,9 @@ const App = () => {
   const [selectedSize,setSelectedSize] = useState("");
   const [isSizeSelected, setIsSizeSelected] = useState(false);
   const [isDoughSelected, setIsDoughSelected] = useState(false);
+    //Total Price Hooku (Baslangic degeri pizza fiyati)
+    const [totalfiyat,setTotalFiyat] = useState(85.50);
+
 
   //Seçilen boyut, Proplar OrderPizza Sayfasına gönderiliyor. (+Validasyon)
   const handleChangeSize = (value) => {
@@ -40,7 +44,7 @@ const App = () => {
     setSecimler(newSecimler);
     }
   })
-  
+
   return (
     <>
       <Switch>
@@ -56,14 +60,24 @@ const App = () => {
           handleCheckboxChange={handleCheckboxChange}
           isSizeSelected={isSizeSelected}
           isDoughSelected={isDoughSelected}
+          totalfiyat={totalfiyat}
+          setTotalFiyat={setTotalFiyat}
           />
         </Route>
 
         <Route path="/success" exact>
-          <Success selectedSize={selectedSize} 
+          <Success 
+          selectedSize={selectedSize} 
           hamurKalinligi={hamurKalinligi}
           secimler={secimler}
+          totalfiyat={totalfiyat}
           />
+        </Route>
+
+        <Route path="/siparis-bilgi" exact>
+          <SiparisBilgi 
+          secimler={secimler} 
+          totalfiyat={totalfiyat} />
         </Route>
       </Switch>
     </>
