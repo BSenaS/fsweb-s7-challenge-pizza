@@ -7,6 +7,15 @@ import { Route } from "react-router-dom/cjs/react-router-dom.min.js";
 import SiparisBilgi from "./components/SiparisBilgi.jsx";
 //Reset css ' i projeye ekleme
 import "./reset.css"; 
+
+const formData = {
+  name: "",
+  size: "",
+  dough: "",
+  toppings: [],
+};
+
+
 const App = () => {
   //HOOKLAR
   const [secimler, setSecimler] = useState([]);

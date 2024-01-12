@@ -22,13 +22,13 @@ export default function Success(props) {
           {`Ek Malzemeler:${secimlerListesi}`}
           </p>
       </div>
-      <div className='siparis-bilgi-wrapper'>
+       <div className='siparis-bilgi-wrapper'>
         <p className='bosluk1'>Sipariş Toplamı</p>
         <p><span className='bosluk2'>
           Seçimler</span> {secimler.length * 5}₺
           </p>
         <p><span className='bosluk3'>Toplam</span> {totalfiyat}₺</p>
-      </div>
+      </div> 
     </div>
     
   );

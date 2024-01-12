@@ -88,6 +88,7 @@ export default function OrderPizza(props){
       e.preventDefault(); 
       axios.post('https://reqres.in/api/users', { 
         selectedToppings: secimler,
+        
       })
       .then(response => {
         console.log("Sipariş başarıyla gönderildi:", response.data);

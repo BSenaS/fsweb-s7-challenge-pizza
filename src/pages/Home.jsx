@@ -3,6 +3,7 @@ import "./home.css";
 import "../mvp-assets/mvp-banner.png";
 import "../mvp-assets/logo.svg";
 import { useHistory } from 'react-router-dom';
+import { HomeCategory } from '../components/HomeCategory/HomeCategory.jsx';
 
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
     history.push('/pizza');
   };
   return (
+    <>
       <div className='home-banner'>
         <div className='home-wrapper' >
           <h1>Teknolojik Yemekler</h1>
@@ -22,6 +24,7 @@ export default function Home() {
           <button onClick={handleButtonClick}>ACIKTIM</button>
         </div>
       </div>
-    
+     <HomeCategory/>
+      </>
   );
 }

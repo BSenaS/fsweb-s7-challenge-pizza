@@ -7,12 +7,17 @@ export default function SiparisBilgi(props) {
 
   return(
     <>
-    <div className="siparis-bilgi-wrapper">
-      <p>Sipariş Toplamı</p>
-      {console.log(secimler)}
+    <div >
+      <ul>
+        <li>Siparis Toplamı:</li>
+        <li>Seçimler: {secimler}</li>
+        <li>Toplam: {totalfiyat}</li>
+      </ul>
+      {/* <p>Sipariş Toplamı</p>
+      Seçimler
       <div>
         Toplam {totalfiyat}
-      </div>
+      </div> */}
     </div>
     </>
   );

@@ -1,0 +1,22 @@
+.home-category {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.home-category-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.home-category-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
