@@ -1,0 +1,208 @@
+
+.home-container {
+  background-color: #FAF7F2;
+  padding-bottom: 5rem;
+}
+
+.home-card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 5rem;
+}
+
+/* Card 1 Ön ayarları */
+.card-1 {
+  display: flex;
+  flex-direction: column;
+  background-image: url("HomeCardAssets/kart-1.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 39.75rem;
+  height: 33.5rem;
+  border-radius: 16px;
+} 
+
+.card-1-items {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin-left: 3rem;
+  margin-top: 3rem;
+}
+
+.card-1 h2 {
+  color: white;
+  font-family: 'Quattrocento';
+  font-weight: 700;
+  font-size: 4em;
+  line-height: 1;
+}
+
+
+/* CARD 2 RIGHT SIDE */
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 39.75rem;
+}
+
+.card-2 {
+  display: flex;
+  background-image: url("HomeCardAssets/kart-2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  width: 39.75rem;
+  height: 15.97rem;
+} 
+
+.card-2-items {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin-left: 2.5rem;
+  margin-top: 2rem;
+}
+
+.card-2 h2 {
+  color: #FFF;
+  font-family: Barlow;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2.76rem;
+}
+
+/* card-3 */
+
+.card-3 {
+  background-image: url("HomeCardAssets/kart-3.png");
+  background-size: contain;
+  border-radius: 1.5rem;
+  background-repeat: no-repeat;
+  width: 39.75rem;
+  height: 15.97rem;
+  border-radius: 16px;
+} 
+
+.card-3-items {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin-left: 2.5rem;
+  margin-top: 2rem;
+}
+
+
+/* Buton Genel ayarlar */
+
+.home-container button {
+  padding: 0.9rem 2.3rem;
+  color: red;
+  background-color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 3rem;
+  border: none;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.home-container button:hover {
+  box-shadow: 0 24px 36px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  cursor: pointer;  
+}
+
+.card-red {
+  color: #CE2829;
+}
+
+.card-1-items p {
+  color: #FFF;
+  font-family: Barlow;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Media queryler - RESPONSIVE */
+
+@media (max-width: 700px) {
+  /* Card-1  */
+  .card-1 {
+    display: flex;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+  .card-1-items {
+    width: 70%;
+    padding-top: 2rem;
+    margin-left: 1rem;
+  }
+
+  .card-1-items h2{
+    font-size: 3rem;
+  }
+
+}
+
+@media (max-width: 700px) {
+  /* CARD - 2 Burada right-side da değer vermek gerekiyor yoksa, card2 ve card3 responsive de istenilen değere inmiyor. */
+
+  .right-side {
+    display: flex;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+  .card-2 {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .card-2-items {
+    width: 60%; 
+    margin-left: 1rem;
+    padding-top: 2rem; 
+    margin-top: 0;
+  }
+
+  .card-2-items h2 {
+    font-size: 1.5rem;
+  }
+
+}
+
+@media (max-width: 700px) {
+  /* CARD - 2 */
+  .card-3 {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .card-3-items {
+    width: 70%; /* You can adjust this width based on your design preferences */
+    margin-left: 1rem;
+    padding-top: 2rem; /* Adjust padding if needed */
+  }
+
+  .card-3-items h2 {
+    font-size: 1.5rem;
+  }
+
+  .card-3-items {
+    width: 60%; 
+    margin-left: 1rem;
+    padding-top: 2rem; 
+    margin-top: 0;
+  }
+
+}
+

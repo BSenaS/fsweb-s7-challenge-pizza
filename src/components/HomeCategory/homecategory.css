@@ -1,7 +1,8 @@
 .home-category {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 5rem;
 }
 
 .home-category-container {
@@ -16,7 +17,35 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  margin-right: 1rem;
+  margin-right: 4rem;
   cursor: pointer;
+
+  color: #292929;
+  font-family: Barlow;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.home-category-item p {
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+
+@media (max-width: 700px) {
+  .home-category-container {
+    width: 90%;
+    justify-content: space-evenly;
+  }
+
+  .home-category {
+    padding-bottom: 1rem;
+  }
+
+  .home-category-item {
+    justify-content: space-around;
+    margin: 0;
+    padding: 0 0.3rem;
+  }
 }

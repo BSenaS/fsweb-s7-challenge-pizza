@@ -1,0 +1,153 @@
+.fav-urunler-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #FAF7F2;
+}
+
+.fav-urunler-main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #FAF7F2;
+}
+
+.fav-urunler-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-right: 4rem;
+  cursor: pointer;
+  color: #292929;
+  font-family: Barlow;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.fav-urunler-item p {
+  margin-left: 1rem;
+}
+
+.fav-urunler-item button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  border-radius: 3rem;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  transition: color, 0.3s;
+}
+
+.fav-urunler-item button:hover {
+  background: #292929;
+  color: white;
+}
+
+.fav-slogan {
+  color: #CE2829;
+  text-align: center;
+  font-family: Satisfy;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.fav-slogan2 {
+  color: #292929;
+  text-align: center;
+  font-family: Barlow;
+  font-size: 2.6rem;
+  font-style: normal;
+  font-weight: 600;
+  padding-bottom: 3rem;
+}
+
+
+/* URUNLER KISMI */
+
+.urunler-secim-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.urunler-secim {
+  display: flex;
+  padding: 1rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+}
+
+.urunler-btn {
+  border-radius: 1em;
+  background-color: #FAF7F2;
+  padding: 15px 40px;
+  border-color: #ffffff00;
+  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  margin-bottom: 2rem;
+}
+
+.urunler-btn:hover{
+  box-shadow: 0 24px 36px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  cursor: pointer;  
+}
+
+
+.urunler-secim h2 {
+  color: #292929;
+  font-family: Barlow;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 600;
+  text-align: start;
+}
+
+.urun-desc {
+  display: flex;
+  justify-content: space-between;
+}
+
+.urun-desc p {
+  color: rgba(27, 27, 27, 0.70);
+  font-family: Barlow;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Media queryler , responsive !! */
+
+@media (max-width: 700px) {
+  .urunler-secim img {
+    width: 19rem;
+  }
+
+  .urunler-btn {
+    border-radius: 1em;
+    background-color: #fff;
+    padding: 10px 20px;
+}
+}
+
+/*  */
+@media (max-width: 700px) {
+  .fav-slogan {
+    font-size: 1.5rem;
+  }
+
+  .fav-slogan2 {
+    font-size: 2rem;
+  }
+
+  .fav-urunler-item {
+    display: flex;
+    margin: 0;
+  }
+}

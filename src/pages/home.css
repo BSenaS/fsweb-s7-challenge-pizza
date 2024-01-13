@@ -22,6 +22,15 @@
   margin-bottom: 35px;
 }
 
+.özel-firsat {
+  color: #FDC913;
+  text-align: center;
+  font-family: Satisfy;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 400;
+}
+
 .home-wrapper h2 {
   color: #FFF;
   text-align: center;
@@ -51,4 +60,11 @@
   border: none;
   padding: 1rem 3.8rem;
   cursor: pointer;
+}
+
+
+@media(max-width: 700px) {
+  .home-banner h2 {
+    font-size: 4rem;
+  }
 }
