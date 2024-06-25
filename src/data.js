@@ -1,0 +1,16 @@
+export const checkBoxList = [
+  "Pepperoni",
+  "Tavuk Izgara",
+  "Mısır",
+  "Sarımsak",
+  "Ananas",
+  "Sosis",
+  "Soğan",
+  "Sucuk",
+  "Biber",
+  "Kabak",
+  "Kanada Jambonu",
+  "Domates",
+  "Jalepeno",
+  "Sucuk",
+];

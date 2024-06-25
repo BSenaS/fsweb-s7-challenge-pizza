@@ -1,26 +1,32 @@
 header {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  background-color: #CE2829;
+  justify-content: center;
+  align-items: center;
+  background-color: #ce2829;
   height: 20vh;
 }
 
 .header-div {
   text-align: left;
 }
+.header-navLink {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
 
 header h1 {
   color: white;
-  margin: 0; 
+  margin: 0;
 }
 
-header p {
-  margin: 0; /* Paragraf etrafındaki boşluğu kaldır */
+.header-home,
+.siparis-span {
+  margin: 0;
   color: white;
-  font-size: 14px; /* Paragrafın font büyüklüğü */
-  opacity: 0.8; /* Paragrafın opaklığı */
-  margin-bottom: 0; /* Paragrafın alt boşluğunu kaldır */
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 0;
 }
 
 .siparis-span {
